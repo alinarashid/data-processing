@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Program {
     public static void main(String[] args) {
 
+        //*List of people
         List<Person> people = new ArrayList<>();
         people.add(new Person("Sarah", "Khan", 28));
         people.add(new Person("Omar", "Ali", 35));
@@ -20,6 +21,9 @@ public class Program {
         people.add(new Person("James", "Wilson", 62));
         people.add(new Person("Zara", "Ahmed", 26));
         people.add(new Person("Lucas", "Garcia", 38));
+
+
+        //*Search
 
         // Ask the user for a name to search (first or last)
         Scanner scanner = new Scanner(System.in);
@@ -48,5 +52,30 @@ public class Program {
             }
         }
 
+
+        //* Stats
+        //? Avg Age
+        double total = 0;
+        for ( Person person : people) {
+            total += person.getAge();
+        }
+        double avg  = total / people.size();
+        System.out.printf("Average age: %.2f%n", avg);
+
+        //? Oldest and Youngest
+        int oldest = people.get(0).getAge();
+        int youngest = people.get(0).getAge();
+
+        for (Person person : people) {
+            if (person.getAge() > oldest) {
+                oldest = person.getAge();
+            } else if ( person.getAge() < youngest) {
+                youngest = person.getAge();
+            }
+        }
+        System.out.println("Oldest: " + oldest);
+        System.out.println("Youngest: " + youngest);
+
+        scanner.close();
     }
 }
